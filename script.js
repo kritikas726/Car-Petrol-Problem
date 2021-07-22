@@ -1,11 +1,24 @@
 function startGame(){
+    var previousGame = document.getElementsByTagName("p")[0];
+    if(previousGame){
+        previousGame.remove();
+    }
     const gameText = document.getElementById("game-text");
     let text = document.createElement("p");
     text.innerHTML = "Game Started</br>";
     gameText.append(text);
     const petrolPumps = [];
-    for( let i = 0;i <= 6;i++){
-        petrolPumps[i] = Math.floor((Math.random()*90)+1);
+    function assignPetrolPumps(){
+        for( let i = 0;i <= 6;i++){
+            petrolPumps[i] = Math.floor((Math.random()*100)+1);
+        }
+    }
+    assignPetrolPumps();
+    function hasDuplicates(arr){
+        return new Set(arr).size !== arr.length;
+    }
+    while(hasDuplicates(petrolPumps)){
+        assignPetrolPumps();
     }
     petrolPumps.sort(function(a,b){
         return a-b;

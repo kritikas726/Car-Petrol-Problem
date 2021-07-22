@@ -10,8 +10,10 @@ html, body{
     box-sizing: border-box;
 }
 .container{
-    height: 90vh;
     justify-content: center;
+}
+.button{
+    display: flex;
 }
 button{
     height: 5vh;
